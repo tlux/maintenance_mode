@@ -1,6 +1,6 @@
-# MaintenanceMode
+# Maintenance Mode for Plug
 
-**TODO: Add description**
+:warning: Work in Progress :warning:
 
 ## Installation
 
@@ -18,4 +18,3 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/maintenance_mode](https://hexdocs.pm/maintenance_mode).
-
