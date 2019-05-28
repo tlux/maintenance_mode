@@ -23,3 +23,7 @@ erl_crash.dump
 maintenance_mode-*.tar
 
 /.elixir_ls
+
+/tmp
+/priv/.maintenance_mode
+.DS_Store

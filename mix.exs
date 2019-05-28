@@ -15,7 +15,8 @@ defmodule MaintenanceMode.MixProject do
         "coveralls.post": :test,
         "coveralls.html": :test
       ],
-      aliases: aliases()
+      aliases: aliases(),
+      elixirc_paths: elixirc_paths(Mix.env())
     ]
   end
 
@@ -42,4 +43,7 @@ defmodule MaintenanceMode.MixProject do
       test: "test --no-start"
     ]
   end
+
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
 end

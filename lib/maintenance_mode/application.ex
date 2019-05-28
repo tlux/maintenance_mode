@@ -5,10 +5,12 @@ defmodule MaintenanceMode.Application do
 
   use Application
 
+  alias MaintenanceMode.StatusAgent
+
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      {MaintenanceMode.StatusAgent, []}
+      {StatusAgent, name: StatusAgent}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

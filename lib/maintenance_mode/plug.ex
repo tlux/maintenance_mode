@@ -3,21 +3,22 @@ defmodule MaintenanceMode.Plug do
 
   import Plug.Conn
 
-  alias MaintenanceMode.StatusAgent
+  @impl true
+  def init(opts) do
+    mod = Keyword.fetch!(opts, :mod)
+    {mod, mod.config()}
+  end
 
   @impl true
-  def init(opts), do: opts
-
-  @impl true
-  def call(conn, opts) do
-    if StatusAgent.enabled?(opts[:mod]) do
-      send_maintenance_resp(conn)
+  def call(conn, {mod, opts}) do
+    if mod.enabled?() do
+      send_maintenance_resp(conn, opts)
     else
       conn
     end
   end
 
-  defp send_maintenance_resp(conn) do
+  defp send_maintenance_resp(conn, _opts) do
     conn
     |> send_resp(503, "Maintenance mode active")
     |> halt()
