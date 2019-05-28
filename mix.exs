@@ -14,14 +14,15 @@ defmodule MaintenanceMode.MixProject do
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test
-      ]
+      ],
+      aliases: aliases()
     ]
   end
 
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger],
+      extra_applications: [],
       mod: {MaintenanceMode.Application, []}
     ]
   end
@@ -31,7 +32,14 @@ defmodule MaintenanceMode.MixProject do
     [
       {:ex_doc, "~> 0.20.2", only: :dev},
       {:excoveralls, "~> 0.11.0", only: :test},
-      {:plug, "~> 1.8.0"}
+      {:plug, "~> 1.8.0"},
+      {:temp, "~> 0.4", only: :test}
+    ]
+  end
+
+  defp aliases do
+    [
+      test: "test --no-start"
     ]
   end
 end

@@ -19,7 +19,7 @@ defmodule MaintenanceMode do
 
       @impl true
       def config do
-        Application.get_all_env(unquote(otp_app), __MODULE__, [])
+        Application.get_env(unquote(otp_app), __MODULE__, [])
       end
 
       @impl true

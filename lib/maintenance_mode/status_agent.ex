@@ -5,8 +5,9 @@ defmodule MaintenanceMode.StatusAgent do
   Starts the status agent.
   """
   @spec start_link(Keyword.t()) :: Agent.on_start()
-  def start_link(_opts) do
-    Agent.start_link(__MODULE__, :reset_state, [], name: __MODULE__)
+  def start_link(opts \\ []) do
+    state = Keyword.get(opts, :entries, %{})
+    Agent.start_link(__MODULE__, :init_state, [state], name: __MODULE__)
   end
 
   @doc """
@@ -37,13 +38,16 @@ defmodule MaintenanceMode.StatusAgent do
   Resets the state of the agent which is required when the maintenance file is
   removed from the file system.
   """
-  @spec reset() :: :ok
-  def reset do
-    Agent.update(__MODULE__, __MODULE__, :reset_state, [])
+  @spec clear() :: :ok
+  def clear do
+    Agent.update(__MODULE__, __MODULE__, :clear_state, [])
   end
 
   @doc false
-  def reset_state(_state \\ nil), do: %{}
+  def init_state(state), do: state
+
+  @doc false
+  def clear_state(_state), do: %{}
 
   @doc false
   def maintenance_enabled?(state, mod) do
