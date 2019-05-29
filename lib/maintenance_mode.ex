@@ -19,29 +19,23 @@ defmodule MaintenanceMode do
 
       @impl true
       def disable do
-        MaintenanceMode.disable(__MODULE__, @config)
+        StatusAgent.disable(__MODULE__, @config)
       end
 
       @impl true
       def disabled? do
-        MaintenanceMode.disabled?(__MODULE__, @config)
+        StatusAgent.disabled?(__MODULE__, @config)
       end
 
       @impl true
       def enable do
-        MaintenanceMode.enable(__MODULE__, @config)
+        StatusAgent.enable(__MODULE__, @config)
       end
 
       @impl true
       def enabled? do
-        MaintenanceMode.enabled?(__MODULE__, @config)
+        StatusAgent.enabled?(__MODULE__, @config)
       end
     end
   end
-
-  defdelegate disable(mod, opts), to: StatusAgent
-  defdelegate disabled?(mod, opts), to: StatusAgent
-  defdelegate enable(mod, opts), to: StatusAgent
-  defdelegate enabled?(mod, opts), to: StatusAgent
-  defdelegate refresh_all(), to: StatusAgent
 end
