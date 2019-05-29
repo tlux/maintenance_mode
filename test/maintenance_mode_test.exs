@@ -5,9 +5,9 @@ defmodule MaintenanceModeTest do
 
   describe "config/0 when used" do
     test "get config" do
-      opts = Application.get_env(:maintenance_mode, MyMaintenanceMode, [])
+      opts = Application.fetch_env!(:maintenance_mode, MyMaintenanceMode)
 
-      assert MyMaintenanceMode.config() == []
+      assert MyMaintenanceMode.config() == opts
     end
   end
 
@@ -55,5 +55,25 @@ defmodule MaintenanceModeTest do
 
       assert MyMaintenanceMode.enabled?() == false
     end
+  end
+
+  describe "disable/2" do
+    # TODO
+  end
+
+  describe "disabled?/2" do
+    # TODO
+  end
+
+  describe "enable/2" do
+    # TODO
+  end
+
+  describe "enabled?/2" do
+    # TODO
+  end
+
+  describe "refresh_all/0" do
+    # TODO
   end
 end

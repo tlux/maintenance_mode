@@ -93,9 +93,10 @@ defmodule MaintenanceMode.StatusAgent do
     Map.put(state, mod, false)
   end
 
-  defp indicator_file(mod, _opts) do
-    ["priv", ".maintenance_mode", Macro.underscore(mod)]
-    |> Path.join()
+  defp indicator_file(mod, opts) do
+    opts
+    |> Keyword.fetch!(:path)
     |> Path.expand()
+    |> Path.join(Macro.underscore(mod))
   end
 end

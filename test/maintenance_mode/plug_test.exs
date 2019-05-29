@@ -9,7 +9,7 @@ defmodule MaintenanceMode.PlugTest do
   describe "init/1" do
     test "get config when mod option given" do
       assert MaintenanceModePlug.init(mod: MyMaintenanceMode) ==
-               {MyMaintenanceMode, []}
+               {MyMaintenanceMode, MyMaintenanceMode.config()}
     end
 
     test "raise when mod option missing" do
