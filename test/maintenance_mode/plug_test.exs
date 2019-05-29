@@ -1,10 +1,9 @@
 defmodule MaintenanceMode.PlugTest do
   use ExUnit.Case
+  use Plug.Test
 
   alias MaintenanceMode.Plug, as: MaintenanceModePlug
   alias MaintenanceMode.StatusAgent
-  alias Plug.Adapters.Test.Conn, as: TestConn
-  alias Plug.Conn
 
   describe "init/1" do
     test "get config when mod option given" do
@@ -42,6 +41,6 @@ defmodule MaintenanceMode.PlugTest do
   end
 
   defp build_conn do
-    TestConn.conn(%Conn{}, :get, "/test", %{})
+    conn(:get, "/test")
   end
 end

@@ -1,4 +1,9 @@
 defmodule MaintenanceMode.Plug do
+  @moduledoc """
+  A middleware that returns a 503 status when the maintenance mode is enabled
+  for the particular application.   
+  """
+
   @behaviour Plug
 
   import Plug.Conn
