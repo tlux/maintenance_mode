@@ -1,10 +1,29 @@
 defmodule MaintenanceMode do
   alias MaintenanceMode.StatusAgent
 
+  @doc """
+  Gets the configuration of the maintenance mode.
+  """
   @callback config() :: Keyword.t()
+
+  @doc """
+  Disables the maintenance mode using the given config.
+  """
   @callback disable() :: :ok
+
+  @doc """
+  Determines whether the maintenance mode is disabled.
+  """
   @callback disabled?() :: boolean
+
+  @doc """
+  Enables the maintenance mode using the given config.
+  """
   @callback enable() :: :ok
+
+  @doc """
+  Determines whether the maintenance mode is enabled.
+  """
   @callback enabled?() :: boolean
 
   @doc false

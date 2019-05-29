@@ -1,4 +1,9 @@
 defmodule MaintenanceMode.StatusAgent do
+  @moduledoc """
+  An agent that keeps track of active maintenance modes. It is started
+  automatically with the application.
+  """
+
   use Agent
 
   @doc """
